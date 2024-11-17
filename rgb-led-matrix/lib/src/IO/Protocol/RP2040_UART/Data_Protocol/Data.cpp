@@ -36,9 +36,9 @@ namespace rgb_matrix::Protocol::RP2040_UART {
                         RGB48 *rgb_long = (RGB48 *) buf;
 
                         for (i = 0; i < length / 6; i++) {
-                            rgb_long[i].red = htons(rgb_long[i].red);
-                            rgb_long[i].green = htons(rgb_long[i].green);
-                            rgb_long[i].blue = htons(rgb_long[i].blue);
+                            rgb_long[i].set_red(htons(rgb_long[i].get_red()));
+                            rgb_long[i].set_green(htons(rgb_long[i].get_green()));
+                            rgb_long[i].set_blue(htons(rgb_long[i].get_blue()));
                         }
                     }
                     break;

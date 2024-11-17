@@ -85,9 +85,9 @@ namespace rgb_matrix {
         // Capture the old values
         std::map<uint16_t, uint8_t> lookup[3];
         for (uint32_t i = 0; i < 256; i++) {
-            lookup[0][lut[brightness_][i].red] = i;
-            lookup[1][lut[brightness_][i].green] = i;
-            lookup[2][lut[brightness_][i].blue] = i;
+            lookup[0][lut[brightness_][i].get_red()] = i;
+            lookup[1][lut[brightness_][i].get_green()] = i;
+            lookup[2][lut[brightness_][i].get_blue()] = i;
         }
 
         // Make the update
@@ -96,9 +96,9 @@ namespace rgb_matrix {
         // Apply the new values to the buffer
         for (uint16_t i = 0; i < width_; i++) {
             for (uint16_t j = 0; j < height_; i++) {
-                buffer_[i][j].red = lut[brightness_][lookup[0][buffer_[i][j].red]].red;
-                buffer_[i][j].green = lut[brightness_][lookup[1][buffer_[i][j].green]].green;
-                buffer_[i][j].blue = lut[brightness_][lookup[2][buffer_[i][j].blue]].blue;
+                buffer_[i][j].set_red(lut[brightness_][lookup[0][buffer_[i][j].get_red()]].get_red());
+                buffer_[i][j].set_green(lut[brightness_][lookup[1][buffer_[i][j].get_green()]].get_green());
+                buffer_[i][j].set_blue(lut[brightness_][lookup[2][buffer_[i][j].get_blue()]].get_blue());
             }
         }
         lock_.unlock();
@@ -113,13 +113,13 @@ namespace rgb_matrix {
         for (uint32_t i = 0; i < 256; i++) {
             switch (index) {
                 case Color::Red:
-                    lookup[lut[brightness_][i].red] = i;
+                    lookup[lut[brightness_][i].get_red()] = i;
                     break;
                 case Color::Green:
-                    lookup[lut[brightness_][i].green] = i;
+                    lookup[lut[brightness_][i].get_green()] = i;
                     break;
                 case Color::Blue:
-                    lookup[lut[brightness_][i].blue] = i;
+                    lookup[lut[brightness_][i].get_blue()] = i;
                     break;
                 default:
                     lock_.unlock();
@@ -132,13 +132,13 @@ namespace rgb_matrix {
         for (uint16_t j = 0; j < 100; j++) {
             switch (index) {
                 case Color::Red:
-                    lut[j][color].red = (uint16_t) round(pow(value / 65535.0, 1 / g.get_red()) * T::red_lim * j / 99.0);
+                    lut[j][color].set_red((uint16_t) round(pow(value / 65535.0, 1 / g.get_red()) * T::red_lim * j / 99.0));
                     break;
                 case Color::Green:
-                    lut[j][color].green = (uint16_t) round(pow(value / 65535.0, 1 / g.get_green()) * T::green_lim * j / 99.0);
+                    lut[j][color].set_green((uint16_t) round(pow(value / 65535.0, 1 / g.get_green()) * T::green_lim * j / 99.0));
                     break;
                 case Color::Blue:
-                    lut[j][color].blue = (uint16_t) round(pow(value / 65535.0, 1 / g.get_blue()) * T::blue_lim * j / 99.0);
+                    lut[j][color].set_blue((uint16_t) round(pow(value / 65535.0, 1 / g.get_blue()) * T::blue_lim * j / 99.0));
                     break;
                 default:
                     lock_.unlock();
@@ -152,13 +152,13 @@ namespace rgb_matrix {
             for (uint16_t j = 0; j < height_; i++) {
                 switch (index) {
                     case Color::Red:
-                        buffer_[i][j].red = lut[brightness_][lookup[buffer_[i][j].red]].red;
+                        buffer_[i][j].set_red(lut[brightness_][lookup[buffer_[i][j].get_red()]].get_red());
                         break;
                     case Color::Green:
-                        buffer_[i][j].green = lut[brightness_][lookup[buffer_[i][j].green]].green;
+                        buffer_[i][j].set_green(lut[brightness_][lookup[buffer_[i][j].get_green()]].get_green());
                         break;
                     case Color::Blue:
-                        buffer_[i][j].blue = lut[brightness_][lookup[buffer_[i][j].blue]].blue;
+                        buffer_[i][j].set_blue(lut[brightness_][lookup[buffer_[i][j].get_blue()]].get_blue());
                         break;
                     default:
                         lock_.unlock();
@@ -247,17 +247,17 @@ namespace rgb_matrix {
         reg.v[2] = T::blue_max;
         rgb_matrix::SIMD::round(reg, &max);
 
-        reg.v[0] = lut[brightness_][r].red;
-        reg.v[1] = lut[brightness_][g].green;
-        reg.v[2] = lut[brightness_][b].blue;
+        reg.v[0] = lut[brightness_][r].get_red();
+        reg.v[1] = lut[brightness_][g].get_green();
+        reg.v[2] = lut[brightness_][b].get_blue();
         rgb_matrix::SIMD::round(reg, &val);
 
         val = (val / max) * dot;
         rgb_matrix::SIMD::round(val, &reg);
 
-        pixel->red = reg.v[0];                                                  // We do not optimize access intentionally
-        pixel->green = reg.v[1];
-        pixel->blue = reg.v[2];
+        pixel->set_red(reg.v[0]);                                               // We do not optimize access intentionally
+        pixel->set_green(reg.v[1]);
+        pixel->set_blue(reg.v[2]);
         lock_.unlock();
     }
 
