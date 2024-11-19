@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.16)
 add_library(rock_pi_s SHARED)
 
 set(CMAKE_C_COMPILER /opt/rock-pi-s/gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-gcc)
@@ -23,7 +24,12 @@ target_link_libraries(rock_pi_s
     ftd2xx
     pthread)
 
-add_executable(rock_pi_s-daemon
+find_package(Qt6 REQUIRED COMPONENTS Core)
+set(CMAKE_AUTOMOC ON) 
+set(CMAKE_AUTORCC ON) 
+set(CMAKE_AUTOUIC ON)
+
+qt_add_executable(rock_pi_s-daemon
     ../../main.cpp)
 
 target_compile_options(rock_pi_s-daemon PRIVATE
@@ -32,5 +38,6 @@ target_compile_options(rock_pi_s-daemon PRIVATE
     -O3
 )
 
-target_link_libraries(rock_pi_s-daemon
-    rock_pi_s)
+target_link_libraries(rock_pi_s-daemon PRIVATE
+    rock_pi_s
+    Qt6::Core)

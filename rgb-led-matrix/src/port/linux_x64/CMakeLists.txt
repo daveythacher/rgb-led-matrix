@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.16)
 add_library(linux_x64 SHARED)
 
 target_include_directories(linux_x64 PUBLIC
@@ -20,7 +21,12 @@ target_link_libraries(linux_x64
     ftd2xx
     pthread)
 
-add_executable(linux_x64-daemon
+find_package(Qt6 REQUIRED COMPONENTS Core)
+set(CMAKE_AUTOMOC ON) 
+set(CMAKE_AUTORCC ON) 
+set(CMAKE_AUTOUIC ON)
+
+qt_add_executable(linux_x64-daemon
     ../../main.cpp)
 
 target_compile_options(linux_x64-daemon PRIVATE
@@ -29,5 +35,6 @@ target_compile_options(linux_x64-daemon PRIVATE
     -O3
 )
 
-target_link_libraries(linux_x64-daemon
-    linux_x64)
+target_link_libraries(linux_x64-daemon PRIVATE
+    linux_x64
+    Qt6::Core)

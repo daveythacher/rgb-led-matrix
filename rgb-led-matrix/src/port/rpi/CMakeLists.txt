@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.16)
 add_library(rpi SHARED)
 
 set(CMAKE_C_COMPILER /opt/pi/tools/arm-bcm2708/arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc)
@@ -23,7 +24,12 @@ target_link_libraries(rpi
     ftd2xx
     pthread)
 
-add_executable(rpi-daemon
+find_package(Qt6 REQUIRED COMPONENTS Core)
+set(CMAKE_AUTOMOC ON) 
+set(CMAKE_AUTORCC ON) 
+set(CMAKE_AUTOUIC ON)
+
+qt_add_executable(rpi-daemon
     ../../main.cpp)
 
 target_compile_options(rpi-daemon PRIVATE
@@ -32,5 +38,6 @@ target_compile_options(rpi-daemon PRIVATE
     -O3
 )
 
-target_link_libraries(rpi-daemon
-    rpi)
+target_link_libraries(rpi-daemon PRIVATE
+    rpi
+    Qt6::Core)

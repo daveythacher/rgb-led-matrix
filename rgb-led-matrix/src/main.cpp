@@ -1,4 +1,5 @@
 #include <iostream>
+#include <QDebug>
 #include "RGBMatrix.h"
 #include "IO/Protocol/RP2040_UART/Data_Protocol/RP2040_UART_Data.h"
 #include "IO/Protocol/RP2040_UART/Control_Protocol/RP2040_UART_Control.h"
@@ -15,6 +16,8 @@ using namespace rgb_matrix::Mappers;
 using namespace rgb_matrix::Protocol::RP2040_UART;
 
 int main(int argc, char **argv) {
+    qInfo() << "Testing";
+
     try {
         // Setup IO
         Node *data_node = new FTDI_UART("000", 0);
