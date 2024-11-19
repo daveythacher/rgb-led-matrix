@@ -23,4 +23,14 @@ target_link_libraries(rock_pi_s
     ftd2xx
     pthread)
 
-add_subdirectory(test)
+add_executable(rock_pi_s-daemon
+    ../../main.cpp)
+
+target_compile_options(rock_pi_s-daemon PRIVATE
+    -Wall
+    -Werror
+    -O3
+)
+
+target_link_libraries(rock_pi_s-daemon
+    rock_pi_s)

@@ -23,4 +23,14 @@ target_link_libraries(rpi
     ftd2xx
     pthread)
 
-add_subdirectory(test)
+add_executable(rpi-daemon
+    ../../main.cpp)
+
+target_compile_options(rpi-daemon PRIVATE
+    -Wall
+    -Werror
+    -O3
+)
+
+target_link_libraries(rpi-daemon
+    rpi)

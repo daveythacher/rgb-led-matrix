@@ -20,4 +20,14 @@ target_link_libraries(linux_x64
     ftd2xx
     pthread)
 
-add_subdirectory(test)
+add_executable(linux_x64-daemon
+    ../../main.cpp)
+
+target_compile_options(linux_x64-daemon PRIVATE
+    -Wall
+    -Werror
+    -O3
+)
+
+target_link_libraries(linux_x64-daemon
+    linux_x64)
