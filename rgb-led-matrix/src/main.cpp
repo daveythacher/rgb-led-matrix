@@ -15,6 +15,8 @@ using namespace rgb_matrix::FTDI;
 using namespace rgb_matrix::Mappers;
 using namespace rgb_matrix::Protocol::RP2040_UART;
 
+extern CFG *parse_config();
+
 int main(int argc, char **argv) {
     qInfo() << "Testing";
 

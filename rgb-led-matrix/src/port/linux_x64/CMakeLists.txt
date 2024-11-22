@@ -27,7 +27,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 qt_add_executable(linux_x64-daemon
-    ../../main.cpp)
+    ../../main.cpp
+    ../../CFG_Parser/CFG_Parser.cpp)
 
 target_compile_options(linux_x64-daemon PRIVATE
     -Wall
