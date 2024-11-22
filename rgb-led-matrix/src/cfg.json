@@ -2,6 +2,7 @@
     "Domains": [
         {
             "Name": "Domain_0",
+            "Port": 8080,
             "Rows": 16,
             "Columns": 96,
             "Protocol": {
