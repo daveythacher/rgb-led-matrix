@@ -15,35 +15,33 @@
             "Panels": [
                 {
                     "Name": "Panel_0",
-                    "CFG": [
-                        {
-                            "Type": "HUB75",
-                            "Scan": 8,
-                            "Rows": 16,
-                            "Columns": 32,
-                            "Mapper": "Outdoor",
-                            "Data Format": "RGB24_ID",
-                            "Gamma": {
-                                "Red": 2.2,
-                                "Green": 2.2,
-                                "Blue": 2.2
-                            },
-                            "Map": {
+                    "CFG": {
+                        "Type": "HUB75",
+                        "Scan": 8,
+                        "Rows": 16,
+                        "Columns": 32,
+                        "Mapper": "Outdoor",
+                        "Data Format": "RGB24_ID",
+                        "Gamma": {
+                            "Red": 2.2,
+                            "Green": 2.2,
+                            "Blue": 2.2
+                        },
+                        "Map": {
+                            "X": 0,
+                            "Y": 0,
+                            "Direction": "Right"
+                        },
+                        "DOT Correction": [
+                            {
                                 "X": 0,
                                 "Y": 0,
-                                "Direction": "Right"
-                            },
-                            "DOT Correction": [
-                                {
-                                    "X": 0,
-                                    "Y": 0,
-                                    "Red": 0.75,
-                                    "Green": 0.25,
-                                    "Blue": 1.0
-                                }
-                            ]
-                        }
-                    ],
+                                "Red": 0.75,
+                                "Green": 0.25,
+                                "Blue": 1.0
+                            }
+                        ]
+                    },
                     "Data": {
                         "Node": "FTDI_UART",
                         "ID": "0x0001"
@@ -51,35 +49,33 @@
                 },
                 {
                     "Name": "Panel_1",
-                    "CFG": [
-                        {
-                            "Type": "HUB75",
-                            "Scan": 8,
-                            "Rows": 16,
-                            "Columns": 32,
-                            "Mapper": "Outdoor",
-                            "Data Format": "RGB24_ID",
-                            "Gamma": {
-                                "Red": 2.2,
-                                "Green": 2.2,
-                                "Blue": 2.2
-                            },
-                            "Map": {
+                    "CFG": {
+                        "Type": "HUB75",
+                        "Scan": 8,
+                        "Rows": 16,
+                        "Columns": 32,
+                        "Mapper": "Outdoor",
+                        "Data Format": "RGB24_ID",
+                        "Gamma": {
+                            "Red": 2.2,
+                            "Green": 2.2,
+                            "Blue": 2.2
+                        },
+                        "Map": {
+                            "X": 0,
+                            "Y": 32,
+                            "Direction": "Right"
+                        },
+                        "DOT Correction": [
+                            {
                                 "X": 0,
-                                "Y": 32,
-                                "Direction": "Right"
-                            },
-                            "DOT Correction": [
-                                {
-                                    "X": 0,
-                                    "Y": 0,
-                                    "Red": 0.75,
-                                    "Green": 0.25,
-                                    "Blue": 1.0
-                                }
-                            ]
-                        }
-                    ],
+                                "Y": 0,
+                                "Red": 0.75,
+                                "Green": 0.25,
+                                "Blue": 1.0
+                            }
+                        ]
+                    },
                     "Data": {
                         "Node": "FTDI_UART",
                         "ID": "0x0002"
@@ -87,35 +83,33 @@
                 },
                 {
                     "Name": "Panel_2",
-                    "CFG": [
-                        {
-                            "Type": "HUB75",
-                            "Scan": 8,
-                            "Rows": 16,
-                            "Columns": 32,
-                            "Mapper": "Outdoor",
-                            "Data Format": "RGB24_ID",
-                            "Gamma": {
-                                "Red": 2.2,
-                                "Green": 2.2,
-                                "Blue": 2.2
-                            },
-                            "Map": {
+                    "CFG": {
+                        "Type": "HUB75",
+                        "Scan": 8,
+                        "Rows": 16,
+                        "Columns": 32,
+                        "Mapper": "Outdoor",
+                        "Data Format": "RGB24_ID",
+                        "Gamma": {
+                            "Red": 2.2,
+                            "Green": 2.2,
+                            "Blue": 2.2
+                        },
+                        "Map": {
+                            "X": 0,
+                            "Y": 64,
+                            "Direction": "Right"
+                        },
+                        "DOT Correction": [
+                            {
                                 "X": 0,
-                                "Y": 64,
-                                "Direction": "Right"
-                            },
-                            "DOT Correction": [
-                                {
-                                    "X": 0,
-                                    "Y": 0,
-                                    "Red": 0.75,
-                                    "Green": 0.25,
-                                    "Blue": 1.0
-                                }
-                            ]
-                        }
-                    ],
+                                "Y": 0,
+                                "Red": 0.75,
+                                "Green": 0.25,
+                                "Blue": 1.0
+                            }
+                        ]
+                    },
                     "Data": {
                         "Node": "FTDI_UART",
                         "ID": "0x0003"
