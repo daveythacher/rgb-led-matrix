@@ -1,10 +1,21 @@
 {
+    "Threads": {
+        "IO": {
+            "Count": 1,
+            "Priority": 250
+        },
+        "Compute": {
+            "Count": 2,
+            "Priority": 0
+        }
+    },
     "Domains": [
         {
             "Name": "Domain_0",
             "Port": 8080,
             "Rows": 16,
             "Columns": 96,
+            "Framerate": 30,
             "Protocol": {
                 "Type": "RP2040_UART",
                 "Control": {

@@ -2,6 +2,7 @@
 #include "ThreadPool/ThreadPool.h"
 #include "Exception/Null_Pointer.h"
 #include "Exception/Unknown_Type.h"
+#include "Exception/Illegal.h"
 
 namespace rgb_matrix {
     ThreadPool *ThreadPool::pool_[2] = { nullptr };
@@ -60,19 +61,36 @@ namespace rgb_matrix {
     }
 
     ThreadPool *ThreadPool::get_threadpool(Pool_ID id) {
+        ThreadPool *result;
+
+        switch (id) {
+            case Pool_ID::Drawer:
+                result = pool_[0];
+                break;
+            case Pool_ID::IO:
+                result = pool_[1];
+                break;
+            default:
+                throw Unknown_Type("ThreadPool: Pool ID is not defined.");
+                break;
+        }
+
+        if (result == nullptr)
+            throw Null_Pointer("ThreadPool: Must create ThreadPool first.");
+
+        return result;
+    }
+
+    ThreadPool *ThreadPool::get_threadpool(Pool_ID id, uint8_t count, uint8_t priority) {
         ThreadPool **result;
-        uint8_t priority = 0;
-        uint8_t count = 1;
         ThreadDomain::ThreadType type = ThreadDomain::ThreadType::Standard;
 
         switch (id) {
             case Pool_ID::Drawer:
                 result = &pool_[0];
                 type = ThreadDomain::ThreadType::Standard;
-                count = 2;
                 break;
             case Pool_ID::IO:
-                priority = 250;
                 result = &pool_[1];
                 type = ThreadDomain::ThreadType::IO;
                 break;
@@ -83,6 +101,8 @@ namespace rgb_matrix {
 
         if (*result == nullptr)
             *result = new ThreadPool(type, count, priority);
+        else
+            throw Illegal("ThreadPool: Attempted to create same Pool ID twice.");
 
         return *result;
     }

@@ -24,6 +24,7 @@ namespace rgb_matrix {
             };
 
             static ThreadPool *get_threadpool(Pool_ID id);
+            static ThreadPool *get_threadpool(Pool_ID id, uint8_t count, uint8_t priority);
             void submit(Runnable *t);
 
         private:
