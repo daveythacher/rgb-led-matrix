@@ -13,6 +13,7 @@ namespace rgb_matrix {
             Frame_Manager(uint16_t framerate = 30);
             ~Frame_Manager();
 
+            // TODO: Use unique_pointer
             void push_frame(Frame *frame);
 
         protected:
