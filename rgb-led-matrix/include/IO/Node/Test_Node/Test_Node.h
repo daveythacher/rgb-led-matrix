@@ -14,7 +14,7 @@ namespace rgb_matrix::Test_Node {
             void write(uint8_t *buf, uint32_t len);
             void read(uint8_t *buf, uint32_t *len, uint32_t timeout_us);
 
-        protected:
+        protected: // TODO: Make private
             Test_Node();
 
             bool claim();

@@ -17,7 +17,7 @@ namespace rgb_matrix::FTDI {
             // For Application (main)
             void set_baud(uint32_t baud);
 
-        protected:
+        protected: // TODO: Make private
             FTDI_UART();
 
             bool claim();

@@ -27,7 +27,7 @@ namespace rgb_matrix {
             // For Scheduler
             void signal(Commands commd);
 
-        protected:
+        protected: // TODO: Make private
             Control_Protocol();
 
             virtual void internal_signal(Commands command) = 0;

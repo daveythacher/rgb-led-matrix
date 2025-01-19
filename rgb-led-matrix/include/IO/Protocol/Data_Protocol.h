@@ -32,7 +32,7 @@ namespace rgb_matrix {
             // For Scheduler
             Status get_protocol_status();
 
-        protected:
+        protected: // TODO: Make private
             Data_Protocol();
 
             Status get_protocol_status(bool clear_errors);

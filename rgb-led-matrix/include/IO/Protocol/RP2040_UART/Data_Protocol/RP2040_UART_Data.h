@@ -16,7 +16,7 @@ namespace rgb_matrix::Protocol::RP2040_UART {
 
             float get_temperature(Control_Protocol *protocol);
         
-        protected:
+        protected: // TODO: Make private
             RP2040_UART_Data();
 
             Data_Protocol::Status internal_state_machine(bool clear_errors);

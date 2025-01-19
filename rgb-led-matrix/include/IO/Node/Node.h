@@ -17,12 +17,12 @@ namespace rgb_matrix {
             void write(uint8_t val);
             virtual void read(uint8_t *buf, uint32_t *len, uint32_t timeout_us) = 0;
 
-        protected:
+        protected: // TODO: Make private
             // Should be thread-safe
             virtual bool claim() = 0;
             virtual void free() = 0;
 
-            friend class Data_Protocol;
+            friend class Data_Protocol;     // TODO: Remove Friends?
             friend class Control_Protocol;
 
         private:

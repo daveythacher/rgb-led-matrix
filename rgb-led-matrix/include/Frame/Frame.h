@@ -19,7 +19,7 @@ namespace rgb_matrix {
             void set_brightness(uint8_t brightness);
             void map_wavelength(uint8_t color, Color index, uint16_t value);
             
-        protected:
+        protected: // TODO: Make private
             Frame();
 
             Panel *single_;

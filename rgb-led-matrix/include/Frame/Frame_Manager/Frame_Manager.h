@@ -16,7 +16,7 @@ namespace rgb_matrix {
             // TODO: Use unique_pointer
             void push_frame(Frame *frame);
 
-        protected:
+        protected: // TODO: Make private
             static void worker_thread(Frame_Manager *object);
 
             std::queue<Frame *> frames_;

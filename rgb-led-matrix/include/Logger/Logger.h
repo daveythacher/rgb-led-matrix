@@ -15,7 +15,7 @@ namespace rgb_matrix {
 
             static Logger *get_logger();
 
-        protected:
+        protected: // TODO: Make private
             static Logger *logger_;
     };
 }

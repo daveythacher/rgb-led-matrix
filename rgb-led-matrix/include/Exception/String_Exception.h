@@ -11,7 +11,7 @@ namespace rgb_matrix {
 
             virtual const char *what() const throw();
 
-        protected:
+        protected: // TODO: Make private
             String_Exception();
 
             std::string string_;

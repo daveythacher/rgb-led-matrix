@@ -13,7 +13,7 @@ namespace rgb_matrix::Protocol::RP2040_UART {
             RP2040_UART_Control(Node *node, uint8_t magic = 0xAE);
             ~RP2040_UART_Control();
         
-        protected:
+        protected: // TODO: Make private
             RP2040_UART_Control();
 
             void internal_signal(Commands command);

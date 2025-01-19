@@ -10,7 +10,7 @@ namespace rgb_matrix {
             float get_green();
             float get_blue();
 
-        protected:
+        private:
             float red_;
             float green_;
             float blue_;
